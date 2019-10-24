@@ -6,8 +6,8 @@ import com.nearby.app.locations.entity.NearBy
 import io.reactivex.Observable
 
 object NearByRemoteSource : NearByDataSource {
-    override fun fetchRepos(username: String): Observable<List<NearBy>> {
-        return NearByApiClient.getNearByService().getStarredRepos(username)
+    override fun fetchPlaces(clientId:String,clientSecret:String,ll:String,llAcc:Double): Observable<NearBy> {
+        return NearByApiClient.getNearByService().searchCoffee(clientId,clientSecret,ll,llAcc)
     }
 
 

@@ -15,11 +15,11 @@ class NearByRepository(private val repoRemoteSource: NearByRemoteSource) :
     private val errorState: MutableLiveData<String> = MutableLiveData()
 
 
-    override fun fetchRepos(username: String): Observable<List<NearBy>> {
+    override fun fetchPlaces(clientId:String,clientSecret:String,ll:String,llAcc:Double): Observable<NearBy> {
 
         networkState.postValue(NetworkState.LOADING)
 
-        return repoRemoteSource.fetchRepos(username)
+        return repoRemoteSource.fetchPlaces(clientId,clientSecret,ll,llAcc)
                         .doOnNext {
 
                             networkState.postValue(NetworkState.LOADED)

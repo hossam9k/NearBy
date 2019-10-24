@@ -11,16 +11,16 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class NearByVM : BaseVM() {
-    private val repoLiveData = MutableLiveData<List<NearBy>>()
+    private val repoLiveData = MutableLiveData<NearBy>()
     //private val errorLiveData = MutableLiveData<String>()
     private val repository = NearByRepository(NearByRemoteSource)
 
-    fun getMyStarsRepos(username:String){
+    fun getMyStarsRepos(clientId:String,clientSecret:String,ll:String,llAcc:Double){
         if (repoLiveData.value !=null){
             return
         }
 
-        addToDisposable(repository.fetchRepos(username)
+        addToDisposable(repository.fetchPlaces(clientId,clientSecret,ll,llAcc)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe{
@@ -37,8 +37,7 @@ class NearByVM : BaseVM() {
     }
 
 
-    fun getLiveData():LiveData<List<NearBy>> = repoLiveData
-    //fun errorLiveData():LiveData<String> = errorLiveData
+    fun getLiveData():LiveData<NearBy> = repoLiveData
 
 }
 

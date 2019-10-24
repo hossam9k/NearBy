@@ -4,5 +4,5 @@ import com.nearby.app.locations.entity.NearBy
 import io.reactivex.Observable
 
 interface NearByDataSource {
-    fun fetchRepos(username:String) : Observable<List<NearBy>>
+    fun fetchPlaces(clientId:String,clientSecret:String,ll:String,llAcc:Double) : Observable<NearBy>
 }

@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.nearby.app.R
+import com.nearby.app.constant.CLIENT_ID
+import com.nearby.app.constant.CLIENT_SECRET
 import com.nearby.app.utils.NetworkState
 
 class NearByActivity : AppCompatActivity() {
@@ -16,7 +18,6 @@ class NearByActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nearby)
-
 
        // val linearLayoutmg = LinearLayoutManager(applicationContext)
         //val divider = DividerItemDecoration(myStarsList.context, DividerItemDecoration.VERTICAL)
@@ -42,21 +43,16 @@ class NearByActivity : AppCompatActivity() {
             Log.d("errorCode",it)
         })
 
-
-
-
         getStarredRepos(nearByVM)
 
         observeMyStars(nearByVM)
 
-
         //nearByVM.errorLiveData()
-
     }
 
 
     private fun getStarredRepos(viewModel :NearByVM){
-        viewModel.getMyStarsRepos("JakeWharton")
+        viewModel.getMyStarsRepos(CLIENT_ID, CLIENT_SECRET,"23423,23423",1.0)
     }
 
     private fun observeMyStars(viewModel:NearByVM){
