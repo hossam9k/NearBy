@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 object NearByApiClient {
 
 
-    val NEAR_BY_SERVICE: NearByService
+    private val NEAR_BY_SERVICE: NearByService
 
     init {
         val loggingInterceptor = HttpLoggingInterceptor()
@@ -33,6 +33,6 @@ object NearByApiClient {
 
     }
 
-    fun getGithubSerivce(): NearByService = NEAR_BY_SERVICE
+    fun getNearByService(): NearByService = NEAR_BY_SERVICE
 
 }

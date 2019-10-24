@@ -3,7 +3,7 @@ package com.nearby.app.locations.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.nearby.app.locations.datasource.NearByDataSource
-import com.nearby.app.locations.entity.Repo
+import com.nearby.app.locations.entity.NearBy
 import com.nearby.app.utils.NetworkState
 import com.nearby.app.utils.networkError
 import io.reactivex.Observable
@@ -15,7 +15,7 @@ class NearByRepository(private val repoRemoteSource: NearByRemoteSource) :
     private val errorState: MutableLiveData<String> = MutableLiveData()
 
 
-    override fun fetchRepos(username: String): Observable<List<Repo>> {
+    override fun fetchRepos(username: String): Observable<List<NearBy>> {
 
         networkState.postValue(NetworkState.LOADING)
 
